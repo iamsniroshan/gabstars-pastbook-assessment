@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  server:
+    build: "./backend"
+    expose:
+      - ${BACKEND_PORT}
+    env_file:
+      - .env
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+    volumes:
+      - ./backend/src:/srv/app/backend/src
+    networks:
+      - webappnetwork
+
+  client:
+    build: "./frontend"
+    expose:
+      - ${FRONT_END_PORT}
+    env_file:
+      - .env
+    ports:
+      - ${FRONT_END_PORT}:${FRONT_END_PORT}
+    links:
+      - server
+    volumes:
+      - ./frontend/src:/srv/app/frontend/src
+    networks:
+      - webappnetwork
+
+  mongodb:
+    image: mongo
+    restart: always
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    networks:
+      - webappnetwork
+
+networks:
+  webappnetwork:
+    driver: bridge

@@ -1,0 +1,14 @@
+.Button {
+  border: none;
+  padding: 10px 20px;
+  width: 150px;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+  background: lightgray;
+  cursor: pointer;
+
+  &.enabled {
+    background: #3f51b5;
+  }
+}

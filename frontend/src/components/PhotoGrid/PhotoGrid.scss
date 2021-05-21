@@ -1,0 +1,18 @@
+.PhotoGrid {
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+
+  &-notification {
+    font-size: 20px;
+  }
+
+  &-backButton {
+    &.enabled {
+      margin-right: 10px;
+      background: lightgray;
+    }
+  }
+}
